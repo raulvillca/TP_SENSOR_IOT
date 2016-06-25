@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/black"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="lightsensor.sounlam.com.grupo_soa.SecondActivity">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_second_imageview"
+        android:layout_gravity="top"
+        android:src="@mipmap/android_electric"/>
+    <include layout="@layout/progressbar_init" />
+</LinearLayout>
