@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical">
     <com.androidplot.xy.XYPlot
         android:layout_width="match_parent"
@@ -10,33 +10,21 @@
         androidPlot.title="Grafica Estadistica"
         android:id="@+id/id_xy_plot"/>
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Maximo : "/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="000"
-            android:id="@+id/id_max"/>
-    </LinearLayout>
-    <LinearLayout
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:text="Maximo: 0"
+        android:id="@+id/id_max"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Minimo : "/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="000"
-            android:id="@+id/id_min"/>
-    </LinearLayout>
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:text="Minimo: 0"
+        android:id="@+id/id_min"/>
 </LinearLayout>

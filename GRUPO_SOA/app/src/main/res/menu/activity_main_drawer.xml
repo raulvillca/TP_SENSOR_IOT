@@ -3,10 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/id_menu_session"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Sesion" />
-        <item
             android:id="@+id/id_menu_config"
             android:icon="@drawable/ic_menu_manage"
             android:title="Configuracion" />

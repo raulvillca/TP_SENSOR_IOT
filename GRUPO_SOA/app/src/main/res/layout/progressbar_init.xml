@@ -16,10 +16,4 @@
         android:progressDrawable="@drawable/progressbar_font_init"
         android:secondaryProgress="0" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
-    </RelativeLayout>
-
 </FrameLayout>

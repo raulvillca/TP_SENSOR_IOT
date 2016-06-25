@@ -50,8 +50,8 @@ public class GraphicFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         TextView textViewMax = (TextView) getActivity().findViewById(R.id.id_max);
         TextView textViewMin = (TextView) getActivity().findViewById(R.id.id_min);
-        textViewMax.setText(yMax+"");
-        textViewMin.setText(yMin+"");
+        textViewMax.setText("Maximo: " + yMax);
+        textViewMin.setText("Minimo: " + yMin);
         //Preparo el graficador
         // initialize our XYPlot reference:
         mySimpleXYPlot = (XYPlot) getActivity().findViewById(R.id.id_xy_plot);

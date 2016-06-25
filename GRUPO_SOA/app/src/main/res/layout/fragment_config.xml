@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <LinearLayout
@@ -12,10 +12,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="15dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
                 android:layout_marginLeft="50dp"
                 android:text="Minimo"/>
             <include layout="@layout/progressbar_min" />
@@ -27,6 +28,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
                 android:layout_marginLeft="50dp"
                 android:text="Maximo"/>
             <include layout="@layout/progressbar_max" />
@@ -34,32 +36,41 @@
     </LinearLayout>
 
     <ImageButton
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="80dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="135dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:id="@+id/id_image_button"
         android:background="@drawable/button_circle"
         android:src="@drawable/ic_menu_send"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="20dp"
-        android:text="Sensor de Luz: "
+        android:layout_marginTop="40dp"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Sensor Luz  : 0.0"
         android:id="@+id/id_config_light"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/id_config_proximity"
-        android:layout_marginLeft="20dp"
-        android:text="Sensor de Proximidad: "/>
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Sensor Prox: 0.0"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/id_config_gyroscope1"
-        android:layout_marginLeft="20dp"
-        android:text="v0: "/>
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Sensor Acel: 0.0"/>
 </LinearLayout>

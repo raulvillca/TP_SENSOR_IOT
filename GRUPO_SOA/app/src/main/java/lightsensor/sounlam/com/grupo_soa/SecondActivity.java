@@ -22,8 +22,6 @@ import java.util.TimerTask;
  */
 public class SecondActivity extends AppCompatActivity {
     private ProgressBar progressBar;
-    private TextView textView;
-    private ImageView imageView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +42,7 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
             }
         };
-        Toast.makeText(this, "Buclear ", Toast.LENGTH_SHORT).show();
+
         timer.schedule(timerTask, 0L);
     }
 }

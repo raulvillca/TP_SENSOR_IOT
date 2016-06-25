@@ -112,16 +112,16 @@ public class ConfigFragment extends Fragment implements View.OnClickListener, Se
 
         synchronized (this) {
             if (sensorEvent.sensor.getType() == Sensor.TYPE_PROXIMITY) {
-                textView_p.setText("Proximidad: " + sensorEvent.values[0]);
+                textView_p.setText("Sensor Prox: " + sensorEvent.values[0]);
                 valorP = sensorEvent.values[0];
             }
             if (sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT) {
-                textView_l.setText("Intensidad de Luz: " + sensorEvent.values[0]);
+                textView_l.setText("Sensor Luz  : " + sensorEvent.values[0]);
                 valorL = sensorEvent.values[0];
             }
             if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
                 intensidadgiro = sensorEvent.values[0];
-                textView_a1.setText("Acelerometro: " + sensorEvent.values[0]);
+                textView_a1.setText("Sensor Acel: " + sensorEvent.values[0]);
             }
         }
         if (valorP == 0 && valorL == 0) {

@@ -25,7 +25,9 @@
             android:id="@+id/id_config_txtProgress_max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:textSize="25dp"
+            android:textStyle="bold"
             android:text="200 %"
             android:layout_centerInParent="true"
             android:textAppearance="?android:attr/textAppearanceSmall" />
