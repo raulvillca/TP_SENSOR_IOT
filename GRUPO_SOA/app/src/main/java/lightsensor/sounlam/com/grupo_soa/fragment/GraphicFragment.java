@@ -1,16 +1,22 @@
 package lightsensor.sounlam.com.grupo_soa.fragment;
 
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.PointLabelFormatter;
@@ -19,24 +25,46 @@ import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import lightsensor.sounlam.com.grupo_soa.MainActivity;
 import lightsensor.sounlam.com.grupo_soa.R;
+import lightsensor.sounlam.com.grupo_soa.connection.ILoadResponse;
+import lightsensor.sounlam.com.grupo_soa.connection.SensorRequest;
+import lightsensor.sounlam.com.grupo_soa.transport.ContentConfig;
+import lightsensor.sounlam.com.grupo_soa.transport.ContentLight;
+import lightsensor.sounlam.com.grupo_soa.transport.ResponseConfig;
+import lightsensor.sounlam.com.grupo_soa.transport.ResponseLight;
+import lightsensor.sounlam.com.grupo_soa.transport.WithConfig;
+import lightsensor.sounlam.com.grupo_soa.transport.WithLight;
+import lightsensor.sounlam.com.grupo_soa.util.GraphicUtil;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by Raul on 8/06/16.
  */
-public class GraphicFragment extends Fragment {
-    private Number yMax;
-    private Number yMin;
-    private List<Number> yIntensity;
-    private XYPlot mySimpleXYPlot;
+public class GraphicFragment extends Fragment implements ILoadResponse {
+    public static String TAG = "GraphicFragment";
+    List<Number> maxNumbers;
+    List<Number> minNumbers;
+    List<Number> yIntensity;
+    List<Integer> lista;
+    int MAXIMO = 200;
+    int MINIMO = 100;
+    XYPlot mySimpleXYPlot;
+    TextView textViewMin;
+    TextView textViewMax;
 
-    public GraphicFragment(Number max, Number min, List<Number> intList) {
-        this.yMax = max;
-        this.yMin = min;
-        this.yIntensity = intList;
+    private final static String TITLE_BOARD = "Mensaje de Galileo";
+    private final static String MSJ_BOARD = "Se detecto baja intensidad luminica";
+
+    public GraphicFragment() {
+        GraphicUtil.preload(yIntensity, maxNumbers, minNumbers, MAXIMO, MINIMO);
     }
 
     @Nullable
@@ -48,63 +76,71 @@ public class GraphicFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        TextView textViewMax = (TextView) getActivity().findViewById(R.id.id_max);
-        TextView textViewMin = (TextView) getActivity().findViewById(R.id.id_min);
-        textViewMax.setText("Maximo: " + yMax);
-        textViewMin.setText("Minimo: " + yMin);
+
+        textViewMax = (TextView) getActivity().findViewById(R.id.id_graphic_max);
+        textViewMin = (TextView) getActivity().findViewById(R.id.id_graphic_min);
+        textViewMax.setText("Maximo: " + MAXIMO);
+        textViewMin.setText("Minimo: " + MINIMO);
         //Preparo el graficador
         // initialize our XYPlot reference:
-        mySimpleXYPlot = (XYPlot) getActivity().findViewById(R.id.id_xy_plot);
+        mySimpleXYPlot = (XYPlot) getActivity().findViewById(R.id.id_graphic_xy_plot);
 
-        // Create a couple arrays of y-values to plot:
-        List<Number> listMax = new ArrayList<Number>();
-        List<Number> listMin = new ArrayList<Number>();
-        for (int i = 0; i < 5; i++) {
-            listMax.add(yMax);
-            listMin.add(yMin);
+        GraphicUtil.draw(
+                mySimpleXYPlot,
+                yIntensity,
+                maxNumbers,
+                minNumbers,
+                getResources().getString(R.string.margin_intensity),
+                getResources().getString(R.string.margin_max),
+                getResources().getString(R.string.margin_min));
+    }
+
+    //Enviar notificacion a la actividad principal
+    private void showNotification() {
+        PendingIntent pi = PendingIntent.getActivity(getActivity(), 0, new Intent(getActivity(), MainActivity.class), 0);
+        Resources r = getResources();
+        Notification notification = new NotificationCompat.Builder(getActivity())
+                .setTicker(TITLE_BOARD)
+                .setSmallIcon(R.drawable.ic_tap_and_play_black_24dp)
+                .setContentTitle(TITLE_BOARD)
+                .setContentText(MSJ_BOARD)
+                .setContentIntent(pi)
+                .setAutoCancel(true)
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(getActivity().NOTIFICATION_SERVICE);
+        notificationManager.notify(0, notification);
+    }
+
+    private boolean sendNotification(List<Integer> arrayNotification) {
+        int cant = 0;
+
+        for (int i = 0; i < arrayNotification.size(); i++) {
+            if (arrayNotification.get(i) > MAXIMO) {
+                cant++;
+            }
         }
 
-        Number[] seriesIntensityNumbers = {130, 210, 150, 150,170};
+        if (cant == arrayNotification.size()) {
+            arrayNotification.clear();
+            showNotification();
+            return true;
+        }
+        return false;
+    }
 
-        // Turn the above arrays into XYSeries':
-        XYSeries series1 = new SimpleXYSeries(
-                listMin,          // SimpleXYSeries takes a List so turn our array into a List
-                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, // Y_VALS_ONLY means use the element index as the x value
-                "Margen Minimo");                             // Set the display title of the series
-        // same as above
-        XYSeries series2 = new SimpleXYSeries(
-                listMax,
-                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY,
-                "Margen Maximo");
-        XYSeries seriesIntensity = new SimpleXYSeries(
-                //Arrays.asList(seriesIntensityNumbers),
+    @Override
+    public void reload( List<Number> yIntensity, List<Number> maxList, List<Number> minList) {
+        mySimpleXYPlot.clear();
+        mySimpleXYPlot.redraw();
+
+        GraphicUtil.draw(
+                mySimpleXYPlot,
                 yIntensity,
-                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY,
-                "Intensidad");
-
-        // Create a formatter to use for drawing a series using LineAndPointRenderer:
-        LineAndPointFormatter series1Format = new LineAndPointFormatter(
-                Color.rgb(0, 200, 0),                   // line color
-                Color.rgb(0, 100, 0),                   // point color
-                null,                                   // fill color (none)
-                new PointLabelFormatter(Color.WHITE));  // text color
-        LineAndPointFormatter series2Format = new LineAndPointFormatter(
-                Color.rgb(0, 0, 200),
-                Color.rgb(0, 0, 100),
-                null,
-                new PointLabelFormatter(Color.WHITE));
-        LineAndPointFormatter seriesIntensityFormat = new LineAndPointFormatter(
-                Color.rgb(200, 0, 0),
-                Color.rgb(100, 0, 0),
-                null,
-                new PointLabelFormatter(Color.WHITE));
-
-        // add a new series' to the xyplot:
-        mySimpleXYPlot.addSeries(series1, series1Format);
-        // same as above:
-        mySimpleXYPlot.addSeries(series2, series2Format);
-        mySimpleXYPlot.addSeries(seriesIntensity, seriesIntensityFormat);
-        // reduce the number of range labels
-        mySimpleXYPlot.setTicksPerRangeLabel(3);
+                maxList,
+                minList,
+                getResources().getString(R.string.margin_intensity),
+                getResources().getString(R.string.margin_max),
+                getResources().getString(R.string.margin_min));
     }
 }

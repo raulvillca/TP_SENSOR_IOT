@@ -1,4 +1,4 @@
-package lightsensor.sounlam.com.grupo_soa.connection;
+package lightsensor.sounlam.com.grupo_soa.model;
 
 /**
  * Created by raulvillca on 25/6/16.

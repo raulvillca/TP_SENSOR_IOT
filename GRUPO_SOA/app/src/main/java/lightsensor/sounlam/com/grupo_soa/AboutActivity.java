@@ -5,8 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
-import lightsensor.sounlam.com.grupo_soa.connection.ContactAdapter;
-import lightsensor.sounlam.com.grupo_soa.connection.Contacts;
+import lightsensor.sounlam.com.grupo_soa.model.ContactAdapter;
+import lightsensor.sounlam.com.grupo_soa.model.Contacts;
 
 /**
  * Created by raulvillca on 24/6/16.

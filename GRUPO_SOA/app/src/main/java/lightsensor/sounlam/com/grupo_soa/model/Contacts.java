@@ -1,4 +1,4 @@
-package lightsensor.sounlam.com.grupo_soa.connection;
+package lightsensor.sounlam.com.grupo_soa.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Contacts {
     public static List<Contact> ContactList() {
         List<Contact> list = new ArrayList<Contact>();
         list.add(new Contact("Acevedo Zain Gaspar"));
-        list.add(new Contact("..... Federico"));
+        list.add(new Contact("Devoto Federico"));
         list.add(new Contact("Villca Raul"));
         return list;
     }

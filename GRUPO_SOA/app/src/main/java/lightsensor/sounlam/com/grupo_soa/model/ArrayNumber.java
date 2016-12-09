@@ -1,4 +1,4 @@
-package lightsensor.sounlam.com.grupo_soa.connection;
+package lightsensor.sounlam.com.grupo_soa.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -4,4 +4,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Acerca de</string>
+
+    <string name="title_notification">Mensaje de Galileo</string>
+    <string name="message_notification">Se detecto baja intensidad luminica</string>
+    
+    <string name="margin_min">Margen Min.</string>
+    <string name="margin_max">Margen Max.</string>
+    <string name="margin_intensity">Intensidad</string>
+
+    <string name="error_server">Ha ocurrido un error, intentelo en otro momento.</string>
+
+    <string name="url_server">https://dweet.io</string>
 </resources>

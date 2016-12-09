@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rotate xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fromDegrees="-90"
+    android:fromDegrees="90"
     android:pivotX="50%"
     android:pivotY="50%"
     android:toDegrees="270"
@@ -9,11 +9,11 @@
 
     <shape
         android:shape="ring"
-        android:useLevel="false" >
+        android:useLevel="false">
         <gradient
             android:centerY="0.5"
-            android:endColor="#AA0220"
-            android:startColor="#FF0220"
+            android:endColor="#FFFFFF"
+            android:startColor="#FF022F"
             android:type="sweep"
             android:useLevel="false" />
     </shape>

@@ -14,15 +14,18 @@ import retrofit.http.Query;
  * Created by Raul on 8/06/16.
  */
 public interface SensorRequest {
-    @GET("/get/dweets/for/lightsensor.sounlam.com.grupo_soa.config")
+    //https://dweet.io/get/dweets/for/lightsensor_sounlam_com_grupo_soa_config
+    @GET("/get/dweets/for/lightsensor_sounlam_com_grupo_soa_config")
     void getConf(Callback<ResponseConfig> callback);
     ///dweet/for/lightsensor.sounlam.com.grupo_soa.config?minimo=130&maximo=200
-    @GET("/dweet/for/lightsensor.sounlam.com.grupo_soa.config")
+
+    //https://dweet.io/dweet/for/lightsensor_sounlam_com_grupo_soa_config?minimo=yMin&maximo=yMax
+    @GET("/dweet/for/lightsensor_sounlam_com_grupo_soa_config")
     void setConf(@Query("minimo") int minimo, @Query("maximo") int maximo, Callback<ContentConfig> callback);
 
-    @GET("/get/dweets/for/lightsensor.sounlam.com.grupo_soa.light")
+    @GET("/get/dweets/for/lightsensor_sounlam_com_grupo_soa_light")
     void getLight(Callback<ResponseLight> callback);
 
-//    @GET("/dweet/for/lightsensor.sounlam.com.grupo_soa.light?intensidad=100")
+//    @GET("/dweet/for/lightsensor_sounlam_com_grupo_soa_light?intensidad=100")
 //    void setLight(Callback<ContentLight> callback);
 }

@@ -1,4 +1,4 @@
-package lightsensor.sounlam.com.grupo_soa.connection;
+package lightsensor.sounlam.com.grupo_soa.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 import lightsensor.sounlam.com.grupo_soa.R;
 

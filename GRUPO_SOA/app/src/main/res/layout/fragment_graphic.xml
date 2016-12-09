@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
     <com.androidplot.xy.XYPlot
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="430dp"
         androidPlot.title="Grafica Estadistica"
-        android:id="@+id/id_xy_plot"/>
+        android:id="@+id/id_graphic_xy_plot"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:textColor="@android:color/white"
         android:textSize="20dp"
         android:text="Maximo: 0"
-        android:id="@+id/id_max"/>
+        android:id="@+id/id_graphic_max"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,5 +26,5 @@
         android:textColor="@android:color/white"
         android:textSize="20dp"
         android:text="Minimo: 0"
-        android:id="@+id/id_min"/>
+        android:id="@+id/id_graphic_min"/>
 </LinearLayout>

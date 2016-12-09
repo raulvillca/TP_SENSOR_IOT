@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    tools:context="lightsensor.sounlam.com.grupo_soa.ConfigActivity"
+    android:orientation="vertical"
+    android:id="@+id/id_activity_configuration">
+    <FrameLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_component_blue"
+            android:gravity="left">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:text="Minimo" />
+            <include layout="@layout/progressbar_min" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:gravity="center_horizontal"
+                android:text="Maximo"/>
+            <include layout="@layout/progressbar_max" />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center|bottom">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:id="@+id/id_relative_image">
+            <ImageButton
+                android:layout_width="120dp"
+                android:layout_height="80dp"
+                android:id="@+id/id_configuration_image_button"
+                android:background="@drawable/button_circle"
+                android:src="@drawable/ic_menu_send"/>
+        </RelativeLayout>
+        <TextView
+            android:layout_below="@+id/id_relative_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Sensor Luz  : 0.0"
+            android:id="@+id/id_configuration_light"/>
+
+        <TextView
+            android:layout_below="@+id/id_configuration_light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_configuration_proximity"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Sensor Prox: 0.0"/>
+
+        <TextView
+            android:layout_below="@+id/id_configuration_proximity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_configuration_gyroscope1"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Sensor Acel: 0.0"/>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
