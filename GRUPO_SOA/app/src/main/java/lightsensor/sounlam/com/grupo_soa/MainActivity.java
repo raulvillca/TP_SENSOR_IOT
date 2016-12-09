@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity
                 Snackbar.make(
                         findViewById(R.id.id_activity_main),
                         getResources().getString(R.string.error_server),
-                        Snackbar.LENGTH_LONG);
+                        Snackbar.LENGTH_LONG).show();
                 connection = false;
             }
         }

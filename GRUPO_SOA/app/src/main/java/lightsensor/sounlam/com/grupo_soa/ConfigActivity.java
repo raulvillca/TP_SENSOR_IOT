@@ -149,6 +149,6 @@ public class ConfigActivity extends AppCompatActivity implements View.OnClickLis
                 findViewById(R.id.id_activity_configuration),
                 getResources().getString(R.string.error_server),
                 Snackbar.LENGTH_LONG
-        );
+        ).show();
     }
 }
