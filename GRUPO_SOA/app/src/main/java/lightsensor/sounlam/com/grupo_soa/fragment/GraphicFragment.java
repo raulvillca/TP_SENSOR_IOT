@@ -95,40 +95,6 @@ public class GraphicFragment extends Fragment implements ILoadResponse {
                 getResources().getString(R.string.margin_min));
     }
 
-    //Enviar notificacion a la actividad principal
-    private void showNotification() {
-        PendingIntent pi = PendingIntent.getActivity(getActivity(), 0, new Intent(getActivity(), MainActivity.class), 0);
-        Resources r = getResources();
-        Notification notification = new NotificationCompat.Builder(getActivity())
-                .setTicker(TITLE_BOARD)
-                .setSmallIcon(R.drawable.ic_tap_and_play_black_24dp)
-                .setContentTitle(TITLE_BOARD)
-                .setContentText(MSJ_BOARD)
-                .setContentIntent(pi)
-                .setAutoCancel(true)
-                .build();
-
-        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(getActivity().NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notification);
-    }
-
-    private boolean sendNotification(List<Integer> arrayNotification) {
-        int cant = 0;
-
-        for (int i = 0; i < arrayNotification.size(); i++) {
-            if (arrayNotification.get(i) > MAXIMO) {
-                cant++;
-            }
-        }
-
-        if (cant == arrayNotification.size()) {
-            arrayNotification.clear();
-            showNotification();
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public void reload( List<Number> yIntensity, List<Number> maxList, List<Number> minList) {
         mySimpleXYPlot.clear();

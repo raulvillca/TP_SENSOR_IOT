@@ -12,18 +12,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import lightsensor.sounlam.com.grupo_soa.connection.IComunicationFragment;
-import lightsensor.sounlam.com.grupo_soa.connection.SensorRequest;
-import lightsensor.sounlam.com.grupo_soa.transport.ContentConfig;
 import lightsensor.sounlam.com.grupo_soa.util.ConfigRequestUtil;
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 /**
  * Created by raulvillca on 1/7/16.

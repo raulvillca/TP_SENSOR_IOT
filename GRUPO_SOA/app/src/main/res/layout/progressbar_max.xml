@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="150dp"
-    android:layout_height="150dp"
+    android:layout_width="@dimen/dim_progress"
+    android:layout_height="@dimen/dim_progress"
     android:layout_marginRight="10dp">
 
     <ProgressBar
         android:id="@+id/id_config_progressBar_max"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/dim_progress"
+        android:layout_height="@dimen/dim_progress"
         android:layout_centerInParent="true"
         android:indeterminate="false"
         android:layout_gravity="center"
@@ -25,9 +25,7 @@
             android:id="@+id/id_config_txtProgress_max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="25dp"
-            android:textStyle="bold"
+            style="@style/text_progress"
             android:text="200 %"
             android:layout_centerInParent="true"
             android:textAppearance="?android:attr/textAppearanceSmall" />

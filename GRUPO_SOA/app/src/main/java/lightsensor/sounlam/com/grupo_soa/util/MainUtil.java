@@ -19,7 +19,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  */
 
 public class MainUtil {
-    private static void showNotification(AppCompatActivity activity, String title, String message) {
+    public static void showNotification(AppCompatActivity activity, String title, String message) {
         PendingIntent pi = PendingIntent.getActivity(activity, 0, new Intent(activity, activity.getClass()), 0);
         Resources r = activity.getResources();
         Notification notification = new NotificationCompat.Builder(activity)
@@ -35,7 +35,7 @@ public class MainUtil {
         notificationManager.notify(0, notification);
     }
 
-    private boolean sendNotification(AppCompatActivity activity, List<Integer> arrayNotification, int max) {
+    public boolean sendNotification(AppCompatActivity activity, List<Integer> arrayNotification, int max) {
         int cant = 0;
 
         for (int i = 0; i < arrayNotification.size(); i++) {

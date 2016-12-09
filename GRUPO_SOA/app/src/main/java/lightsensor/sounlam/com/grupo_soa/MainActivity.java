@@ -18,6 +18,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,13 +28,13 @@ import lightsensor.sounlam.com.grupo_soa.connection.IComunicationFragment;
 import lightsensor.sounlam.com.grupo_soa.fragment.GraphicFragment;
 import lightsensor.sounlam.com.grupo_soa.util.ConfigRequestUtil;
 import lightsensor.sounlam.com.grupo_soa.util.GraphicRequestUtil;
-import lightsensor.sounlam.com.grupo_soa.util.GraphicUtil;
+import lightsensor.sounlam.com.grupo_soa.util.MainUtil;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, IComunicationFragment {
 
     private List<Integer> arrayNotification;
-    private int max;
+    private int max = 200;
     private int retry = 0;
     private boolean connection = true;
     private List<Number> intensityList;
@@ -77,7 +79,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent i = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(i);
@@ -115,7 +116,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void run() {
                 while (connection) {
-
                     Log.e("Realizando consulta","primera");
                     requestUtil1.sendLightRequest();
                     SystemClock.sleep(2500);
@@ -130,7 +130,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void setLightResponse(List<Number> response) {
         intensityList = response;
+        List<Integer> intengerList = new ArrayList<>();
         Log.e("Realizando consulta","primera Respuesta");
+        for (int i = 0; i < response.size(); i++) {
+            intengerList.add(response.get(i).intValue());
+        }
+
+        sendNotification(intengerList);
     }
 
     @Override
@@ -139,6 +145,7 @@ public class MainActivity extends AppCompatActivity
         if (intensityList != null) {
             GraphicFragment fragment = (GraphicFragment) getSupportFragmentManager().findFragmentByTag(GraphicFragment.TAG);
             if (fragment != null && fragment.isVisible()) {
+                max = maximo.get(0).intValue();
                 fragment.reload(intensityList, maximo, minimo);
             }
         }
@@ -157,5 +164,25 @@ public class MainActivity extends AppCompatActivity
                 connection = false;
             }
         }
+    }
+
+    //enviamos notificaciones si todos los valores son mayores al margen de intensidad
+    private boolean sendNotification(List<Integer> arrayNotification) {
+        int cant = 0;
+
+        for (int i = 0; i < arrayNotification.size(); i++) {
+            if (arrayNotification.get(i) > max) {
+                cant++;
+            }
+        }
+
+        if (cant == arrayNotification.size()) {
+            arrayNotification.clear();
+            MainUtil.showNotification(MainActivity.this,
+                    getResources().getString(R.string.title_notification),
+                    getResources().getString(R.string.message_notification));
+            return true;
+        }
+        return false;
     }
 }
