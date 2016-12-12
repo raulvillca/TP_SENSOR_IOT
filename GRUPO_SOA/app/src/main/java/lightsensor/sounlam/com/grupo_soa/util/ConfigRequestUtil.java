@@ -2,13 +2,12 @@ package lightsensor.sounlam.com.grupo_soa.util;
 
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import lightsensor.sounlam.com.grupo_soa.R;
-import lightsensor.sounlam.com.grupo_soa.connection.IComunicationFragment;
+import lightsensor.sounlam.com.grupo_soa.connection.ICommunicationFragment;
 import lightsensor.sounlam.com.grupo_soa.connection.SensorRequest;
 import lightsensor.sounlam.com.grupo_soa.transport.ContentConfig;
 import lightsensor.sounlam.com.grupo_soa.transport.ResponseConfig;
@@ -26,7 +25,7 @@ public class ConfigRequestUtil {
 
     private RestAdapter restAdapter;
     private SensorRequest sensorRequest;
-    private IComunicationFragment iComunication;
+    private ICommunicationFragment iComunication;
 
     public ConfigRequestUtil(AppCompatActivity activity) {
         restAdapter = new RestAdapter.Builder()
@@ -36,7 +35,7 @@ public class ConfigRequestUtil {
                 .build();
         sensorRequest = restAdapter.create(SensorRequest.class);
 
-        iComunication = (IComunicationFragment) activity;
+        iComunication = (ICommunicationFragment) activity;
     }
 
     /***

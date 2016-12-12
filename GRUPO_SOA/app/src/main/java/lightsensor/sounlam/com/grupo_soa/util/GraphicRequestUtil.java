@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lightsensor.sounlam.com.grupo_soa.R;
-import lightsensor.sounlam.com.grupo_soa.connection.IComunicationFragment;
+import lightsensor.sounlam.com.grupo_soa.connection.ICommunicationFragment;
 import lightsensor.sounlam.com.grupo_soa.connection.SensorRequest;
 import lightsensor.sounlam.com.grupo_soa.transport.ContentLight;
 import lightsensor.sounlam.com.grupo_soa.transport.ResponseLight;
@@ -24,7 +24,7 @@ import retrofit.client.Response;
 public class GraphicRequestUtil {
     private RestAdapter restAdapter;
     private SensorRequest sensorRequest;
-    private IComunicationFragment iComunication;
+    private ICommunicationFragment iComunication;
 
     public GraphicRequestUtil(AppCompatActivity activity) {
         this.restAdapter = new RestAdapter
@@ -33,7 +33,7 @@ public class GraphicRequestUtil {
                 .getString(R.string.url_server))
                 .build();
         this.sensorRequest = restAdapter.create(SensorRequest.class);
-        iComunication = (IComunicationFragment) activity;
+        iComunication = (ICommunicationFragment) activity;
     }
 
     /***

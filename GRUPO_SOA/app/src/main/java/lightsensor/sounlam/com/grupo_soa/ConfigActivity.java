@@ -15,13 +15,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import lightsensor.sounlam.com.grupo_soa.connection.IComunicationFragment;
+import lightsensor.sounlam.com.grupo_soa.connection.ICommunicationFragment;
 import lightsensor.sounlam.com.grupo_soa.util.ConfigRequestUtil;
 
 /**
  * Created by raulvillca on 1/7/16.
  */
-public class ConfigActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener, IComunicationFragment {
+public class ConfigActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener, ICommunicationFragment {
     private ImageButton button;
     private SensorManager mSensorManager;
     private Sensor pSensor;
