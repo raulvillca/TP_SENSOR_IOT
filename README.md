@@ -21,16 +21,20 @@ compilador y tools:
 ```
 CompileSdkVersion 24
 buildToolsVersion "24.0.0"
+```
 
 gradle para consumir la API REST:
-
+```
 compile 'com.squareup.retrofit:retrofit:1.9.0'
 
 compile 'com.google.code.gson:gson:2.6.2'
+```
 
+```
 gradle para grafica:
-
+```
 compile 'com.androidplot:androidplot-core:0.6.1'
+```
 
 gradle para coordinator:
 
