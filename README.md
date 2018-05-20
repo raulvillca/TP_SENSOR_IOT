@@ -18,6 +18,7 @@ https://dweet.io/dweet/for/lightsensor_sounlam_com_grupo_soa_config?minimo=yMin&
 https://dweet.io/get/dweets/for/lightsensor_sounlam_com_grupo_soa_config
 
 compilador y tools:
+```
 CompileSdkVersion 24
 buildToolsVersion "24.0.0"
 
@@ -34,5 +35,6 @@ compile 'com.androidplot:androidplot-core:0.6.1'
 gradle para coordinator:
 
 compile 'com.android.support:design:24.0.0'
+```
 
 La aplicacioón consume una API REST de dweet con valores cargados desde una placa galileo.
